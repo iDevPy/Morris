@@ -29,8 +29,6 @@ jobs:
       #
       GOOGLE_RUNTIME_VERSION: "3.11.7"
       #
-      PORT: ${{ $PORT || '8888' }}
-      #
       GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:$PORT'"
     
     steps:
@@ -46,6 +44,7 @@ jobs:
           --env "DISABLE_COLLECTSTATIC=1" \
           --env "GOOGLE_RUNTIME_VERSION=${{ env.GOOGLE_RUNTIME_VERSION }}" \
           --env "GOOGLE_ENTRYPOINT=${{ env.GOOGLE_ENTRYPOINT }}" \
+          --env "PORT=${{ PORT || '8888' }}" \
           --builder ${{ env.BUILDPACK_BUILDER }}
 
     - name: Login to Docker Hub

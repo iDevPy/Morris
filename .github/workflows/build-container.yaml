@@ -44,7 +44,7 @@ jobs:
           --env "DISABLE_COLLECTSTATIC=1" \
           --env "GOOGLE_RUNTIME_VERSION=${{ env.GOOGLE_RUNTIME_VERSION }}" \
           --env "GOOGLE_ENTRYPOINT=${{ env.GOOGLE_ENTRYPOINT }}" \
-          --env "PORT=${{ PORT || '8888' }}" \
+          --env "PORT='8888'" \
           --builder ${{ env.BUILDPACK_BUILDER }}
 
     - name: Login to Docker Hub

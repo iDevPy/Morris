@@ -29,9 +29,9 @@ jobs:
       #
       GOOGLE_RUNTIME_VERSION: "3.11.7"
       #
-      PORT: ${{ secrets.PORT || '8888' }}
+      PORT: ${{ PORT || '8888' }}
       #
-      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:\"${{ env.PORT }}\"'"
+      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:$PORT'"
     
     steps:
     - uses: actions/checkout@v4

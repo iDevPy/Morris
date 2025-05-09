@@ -33,9 +33,7 @@ jobs:
       #
       GOOGLE_RUNTIME_VERSION: "3.11.7"
       #
-      PORT: "${{ github.event.inputs.port }}"
-      #
-      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:${{ github.event.inputs.port }}'"
+      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:${{ port }}'"
     
     steps:
     - uses: actions/checkout@v4
@@ -50,7 +48,6 @@ jobs:
           --env "DISABLE_COLLECTSTATIC=1" \
           --env "GOOGLE_RUNTIME_VERSION=${{ env.GOOGLE_RUNTIME_VERSION }}" \
           --env "GOOGLE_ENTRYPOINT=${{ env.GOOGLE_ENTRYPOINT }}" \
-          --env "PORT=${{ github.event.inputs.port }}" \
           --builder ${{ env.BUILDPACK_BUILDER }}
 
     - name: Login to Docker Hub

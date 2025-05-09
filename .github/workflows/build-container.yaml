@@ -33,7 +33,7 @@ jobs:
       #
       GOOGLE_RUNTIME_VERSION: "3.11.7"
       #
-      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:${{ port || '8080'}}'"
+      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:${{ inputs.port }}'"
     
     steps:
     - uses: actions/checkout@v4

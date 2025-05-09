@@ -35,7 +35,7 @@ jobs:
       #
       PORT: "PORT=${{ github.event.inputs.port }}"
       #
-      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:$PORT'"
+      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:PORT=${{ github.event.inputs.port }}'"
     
     steps:
     - uses: actions/checkout@v4

@@ -29,7 +29,7 @@ jobs:
       #
       GOOGLE_RUNTIME_VERSION: "3.11.7"
       #
-      PORT: ${{ PORT || '8888' }}
+      PORT: ${{ $PORT || '8888' }}
       #
       GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:$PORT'"
     

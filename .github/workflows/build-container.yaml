@@ -10,7 +10,11 @@ on:
     paths:
       - 'src/**'
   workflow_dispatch:
-    
+    inputs:
+      port:
+        description: 'Port number'
+        required: true
+        default: '8080'
 
 jobs:
   build-and-push:
@@ -29,9 +33,9 @@ jobs:
       #
       GOOGLE_RUNTIME_VERSION: "3.11.7"
       #
-      PORT: ${{ secrets.PORT || '8888' }}
+      PORT: "PORT=${{ github.event.inputs.port }}"
       #
-      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:${{ env.PORT }}'"
+      GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:$PORT'"
     
     steps:
     - uses: actions/checkout@v4
@@ -46,7 +50,7 @@ jobs:
           --env "DISABLE_COLLECTSTATIC=1" \
           --env "GOOGLE_RUNTIME_VERSION=${{ env.GOOGLE_RUNTIME_VERSION }}" \
           --env "GOOGLE_ENTRYPOINT=${{ env.GOOGLE_ENTRYPOINT }}" \
-          --env "PORT='8888'" \
+          --env "PORT=${{ env.PORT }}"" \
           --builder ${{ env.BUILDPACK_BUILDER }}
 
     - name: Login to Docker Hub

@@ -1,0 +1,67 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "name": "Python Debugger: Django",
+      "type": "debugpy",
+      "request": "launch",
+      "args": [
+        "runserver",
+        "wpad.kp.org:80" // localhost:80
+      ],
+      "django": true,
+      "autoStartBrowser": false,
+      "program": "${workspaceFolder}/src/manage.py",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Launch Edge",
+      "request": "launch",
+      "type": "msedge",
+      "url": "http://127.0.0.1:8081",
+      "webRoot": "${workspaceFolder}",
+    },
+    {
+      "name": "Tailwind Developer",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/tailwind",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "name": "Tailwind Production",
+      "command": "npm run prod",
+      "cwd": "${workspaceFolder}/tailwind",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "name": "Gunicorn: Django ",
+      "envFile": "${workspaceFolder}/.env",
+      "autoStartBrowser": true,
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/venv/lib/python3.12/site-packages/gunicorn", 
+      "gevent": true,
+      "cwd": "${workspaceFolder}/src",
+      "args": [
+        "config.wsgi:application",
+        // "--chdir ${workspaceFolder}/src",
+        "--bind=127.0.0.1:8080",
+        "--reload",
+        "--worker-class=eventlet",
+        "--workers=1",
+        "--threads=1",
+        "--timeout=1800",
+        "--reload-extra-file=${workspaceFolder}/.env",
+        "--reload-extra-file=${workspaceFolder}/src/assets/templates/base.html",
+        "--reload-extra-file=${workspaceFolder}/src/apps/testing/templates/testing/index.html",
+        "--reload-extra-file=${workspaceFolder}/tailwind/tailwind-input.css",
+      ]
+    },
+  ]
+}

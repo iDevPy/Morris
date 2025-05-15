@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "prod": "npx @tailwindcss/cli -i tailwind-input.css -o ../static/css/style.min.css --watch",
+    "dev": "npx @tailwindcss/cli -i tailwind-input.css -o ../src/assets/static/css/style.min.css --watch"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.337",
+    "@iconify/tailwind4": "^1.0.6",
+    "@tailwindcss/cli": "^4.1.6",
+    "daisyui": "^5.0.35",
+    "htmx.org": "^2.0.4",
+    "tailwindcss": "^4.1.6"
+  }
+}

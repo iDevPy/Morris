@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@source "../src";
+@plugin "daisyui" {
+    themes: all;
+  }
+@custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+@plugin "@iconify/tailwind4" {
+    prefix: "icon";
+    scale: 1.2;
+}
+@theme {
+    /* KP Colors */
+    --color-kp-primary: #0078B3;
+    /*--color-kp-warning:#FEC941;
+    --color-kp-danger: #B63125; */
+    /* Blues */
+    /* --color-kp-light_blue: #92CCF0;
+    --color-kp-mid_blue: #0078B3;
+    --color-kp-copy_blue: #0168A1;
+    --color-kp-vibrant_blue: "#1A73E8";
+    --color-kp-dark_blue: #003B71;
+    --color-kp-darkest_blue: "#0D1C3D"; */
+    /* Oranges */
+    /* --color-kp-light_orange: #F36C0D;
+    --color-kp-copy_orange: #E86826;
+    --color-kp-mid_orange: #D1480C;
+    --color-kp-dark_orange: #BE2D0O;
+    --color-kp-yellow:#FEC941; */
+    /* Greens */
+    /* --color-kp-light_green: #A4D751;
+    --color-kp-mid_green: #57A635;
+    --color-kp-dark_green: #4A7628; */
+    /* Backgrounds */
+    /* --color-kp-pebble: #F7F7F7;
+    --color-kp-light_graph: #F4F5F6;
+    --color-kp-pale_blue: #F0F7FA;
+    --color-kp-mid_graph: #E9EBEE; 
+    --color-kp-deep_graph: #D3D6DC; */
+    /* Text */
+    /* --color-kp-inky_txt: #F7F7F7;
+    --color-kp-dolphin_txt: #F4F5F6; */
+    /* Color Blue */
+    /* --color-blue-350: #92CCF0;
+    --color-blue-50: #1A73E8;
+    --color-blue-750: #0168A1;
+    --color-blue-720: #0078B3;
+    --color-blue-920: #003B71;
+    --color-blue-970: #0D1C3D; */
+    /* Fonts */
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Inter";
+}
+
+
+.BWabIWdbZ5qWNbPXxuBc {
+    clip: rect(0,0,0,0);
+    border-width: 0;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px
+}
+
+._FONMPVaCsLFJJGDaaIL:focus {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)
+}
+
+.btn-ghost:hover {
+    background-color: transparent !important;
+    border: 0 transparent !important;
+  }

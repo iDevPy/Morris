@@ -14,7 +14,7 @@ Navigate to your Django project directory and copy the build container workflow 
 
 ```bash
 mkdir -p .github/workflows
-curl https://raw.githubusercontent.com/codingforentrepreneurs/django-auto-container/main/.github/workflows/build-container.yaml > .github/workflows/build-container.yaml
+curl https://raw.githubusercontent.com/idevpy/django-auto-container/main/.github/workflows/build-container.yaml > .github/workflows/build-container.yaml
 ```
 
 ### 2. Github Actions Secrets
@@ -29,7 +29,7 @@ If you do not include these secrets, the container will be built but not hosted 
 #### Recommended Secrets:
 
 These secrets are highly recommended to add for your specific project.
-- `DOCKER_HUB_REPO`: The Docker repository to push to, in the format `username/repository`. Defaults to the format of your GitHub repo if not set -- this is where you will store your container.
+- `DOCKER_HUB_REPO`: The Docker repository to push to, in the format `username/repository` (all lowercase no capitalization). Defaults to the format of your GitHub repo if not set -- this is where you will store your container. 
 - `BASE_DIR`: The default Django project location is `src/` as you see in this repo. If you have a different location, you can set it here.
 
 #### Optional Secrets:
@@ -57,7 +57,7 @@ value = "3.11.7"
 
 [[build.env]]
 name = "GOOGLE_ENTRYPOINT"
-value = "gunicorn cfehome.wsgi:application --bind \"0.0.0.0:$PORT\""
+value = "gunicorn config.wsgi:application --bind \"0.0.0.0:$PORT\""
 ```
 The `GOOGLE_ENTRYPOINT` is the command that will be run when the container is started. In this case, it's the production version of running `python manage.py runserver` but with `gunicorn` instead of `runserver`.
 

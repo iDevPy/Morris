@@ -10,11 +10,6 @@ on:
     paths:
       - 'src/**'
   workflow_dispatch:
-    # inputs:
-    #   port:
-    #     description: 'Port number'
-    #     required: true
-    #     default: '8080'
 
 jobs:
   build-and-push:
@@ -25,15 +20,11 @@ jobs:
       DISABLE_COLLECTSTATIC: ${{ secrets.DISABLE_COLLECTSTATIC || 1 }}
       # Default to 'gcr.io/buildpacks/builder' if BUILDPACK_BUILDER secret is not set.
       # https://cloud.google.com/docs/buildpacks/builders
-      BUILDPACK_BUILDER: ${{ secrets.BUILDPACK_BUILDER || 'gcr.io/buildpacks/builder' }}
+      BUILDPACK_BUILDER: ${{ secrets.BUILDPACK_BUILDER || 'gcr.io/buildpacks/builder:latest' }}
       # Docker Image Tag, default to GitHub sha if not set
       DOCKER_HUB_IMAGE_TAG: ${{ secrets.DOCKER_HUB_IMAGE_TAG || github.sha }}
       # Default DOCKER_REPO to GitHub's username/repository if not provided as a secret
       DOCKER_HUB_REPO: ${{ secrets.DOCKER_HUB_REPO || github.repository }}
-      #
-      GOOGLE_RUNTIME_VERSION: "3.11.7"
-      #
-      # GOOGLE_ENTRYPOINT: "django-admin startproject config . && gunicorn config.wsgi:application --bind '0.0.0.0:${{ inputs.port }}'"
     
     steps:
     - uses: actions/checkout@v4
@@ -46,8 +37,6 @@ jobs:
         pack build ${{ env.DOCKER_HUB_REPO }}:${{ env.DOCKER_HUB_IMAGE_TAG }} \
           --path ${{ env.BASE_DIR }} \
           --env "DISABLE_COLLECTSTATIC=1" \
-          --env "GOOGLE_RUNTIME_VERSION=${{ env.GOOGLE_RUNTIME_VERSION }}" \
-          # --env "GOOGLE_ENTRYPOINT=${{ env.GOOGLE_ENTRYPOINT }}" \
           --builder ${{ env.BUILDPACK_BUILDER }}
 
     - name: Login to Docker Hub

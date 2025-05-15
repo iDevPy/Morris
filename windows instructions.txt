@@ -1,0 +1,61 @@
+# To create a secret Key
+python -c "import secrets; print(secrets.token_urlsafe())"
+
+## ON CMD
+cd  C:\coding\webapps\morris
+python -m venv venv
+venv\Scripts\activate
+
+python -m pip install --upgrade -r src/requirements.txt 
+
+# permissions error is fine
+nodeenv -p
+
+cd  C:\coding\webapps\morris\tailwind
+npm install tailwindcss @tailwindcss/cli daisyui@latest @iconify/tailwind4 @iconify/json htmx.org@^2.0.4
+
+cp C:/coding/webapps/morris/tailwind/node_modules/htmx.org/dist/htmx.min.js 
+
+# Generate an SSH key for gitlab and entered here:
+https://gitlab.acitools.kaiser.org/-/user_settings/ssh_keys
+ssh-keygen -t ed25519 -C "ivan.rivera@kp.org" 
+copy key from: C:\Users\q299875\.ssh\id_rsa.pub
+
+Use VSCode Clone Repository feature and enter this URL: ssh://git@gitlab.acitools.kaiser.org:32222/Q299875/morris.git
+
+______________
+
+## ON Bash
+cd /c/coding/webapps/morris
+
+python -m venv venv
+
+source venv/Scripts/activate
+python -m pip install --upgrade -r requirements.txt
+
+cp /c/coding/webapps/morris/tailwind/package.json /c/coding/webapps/morris/venv/Lib
+cd /c/coding/webapps/morris/venv/Lib
+
+nodeenv -p
+
+npm install -g npm --no-optional
+
+cd  /c/coding/webapps/morris/tailwind
+npm install -D tailwindcss @tailwindcss/cli daisyui@latest @iconify/tailwind4 @iconify/json htmx.org@^2.0.4
+
+
+____________________________________________________________________
+## On Zorin/Ubuntu
+
+cd  ~/coding/webapps/Morris
+python -m venv venv
+source venv/bin/activate
+
+python -m pip install --upgrade -r src/requirements.txt 
+
+nodeenv -p
+
+cd  ~/coding/webapps/Morris/tailwind
+npm install -D tailwindcss @tailwindcss/cli daisyui@latest @iconify/tailwind4 @iconify/json htmx.org@^2.0.4
+cp ~/coding/webapps/Morris/tailwind/node_modules/htmx.org/dist/htmx.min.js ~/coding/webapps/Morris/src/assets/static/js/htmx.min.js
+cp ~/coding/webapps/Morris/tailwind/node_modules/htmx.org/dist/htmx.min.js ~/coding/webapps/Morris/static/js/htmx.min.js

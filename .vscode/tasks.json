@@ -1,0 +1,5 @@
+{   "version": "2.0.0",
+    "label": "killdebugger",
+    "type": "shell",
+    "command": "lsof -t -i tcp:8081 | xargs kill -9"
+}

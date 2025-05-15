@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Download PubMed data into MS Excel{% endblock title %}
+{% block style %}<link rel="stylesheet" href="{% static 'css/style.min.css' %}"/> {% endblock style %}
+{% block content %}
+    Active Theme: {{ light_theme }},
+    Selected Theme: {{ dark_theme }},
+
+    <div class="p-2 mr-1 rounded-lg focus:ring-4">
+        {{page_h1_title}} application to download PubMed data into a Microsoft Excel spreadsheet
+        {{request.method}}
+        {{request.user}}
+        {{request.user.is_authenticated}}
+
+        {% for t in test %}
+          {{ t }}
+        {% endfor %}
+    </div>
+
+    <!-- Modal -->
+      <!-- Open the modal using ID.showModal() method -->
+      <button class="btn" onclick="my_modal.showModal()">Open Modal</button>
+      <dialog id="my_modal" class="modal">
+        <div class="modal-box w-11/12 max-w-5xl">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          </form>
+          <h3 class="text-lg font-bold">Hello!</h3>
+          <p class="py-4">Press ESC key or click outside to close</p>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button>Close</button>
+        </form>
+      </dialog>
+    
+    
+{% endblock content %}
+{% block scripts %}
+    {% comment %} <script src="" async defer></script> {% endcomment %}
+    
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+{% endblock scripts %}

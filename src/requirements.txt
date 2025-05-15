@@ -1,2 +1,36 @@
-Django
+# Required
+pip
 gunicorn
+Django
+python-decouple
+whitenoise
+django-compressor
+nodeenv
+django-htmx
+#django_extensions
+#notebook
+
+# For MS SQL  DB
+#pyodbc
+#mssql-django # This will install the Django version needed.
+
+# For PostgreSQL db
+psycopg2-binary
+
+# For remote debugging server in VS Code.
+eventlet
+gevent
+
+#Required by controlled_vocabulary
+#urllib3
+
+# Other Dependencies to be installed as needed.
+# biopython
+#pandas
+#numpy
+#openpyxl
+#sqlalchemy
+# XlsxWriter
+# lxml
+# pyarrow
+# Jinja2

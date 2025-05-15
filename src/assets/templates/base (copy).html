@@ -1,0 +1,42 @@
+{% load compress %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="{{ theme }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no shrink-to-fit=no"> -->
+    <meta name="robots" content="noarchive" />
+    <title>DaisyUI Components Landing Page - Corporate & Night Theme | {% block title %}{% endblock title %}</title>
+    {% compress css %}{% block style %}{% endblock style%}{% endcompress %}
+    
+  </head>
+  <body>
+    <!-- Invisible div to trigger HTMX theme detection POST on page load -->
+    <div id="theme-detector" style="display:none;" hx-post="{% url 'testing:detect_theme' %}" hx-trigger="load" 
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-vals='{"preferred_theme": ""}' 
+        hx-on="htmx:configRequest: function(evt){
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          evt.detail.parameters.preferred_theme = prefersDark ? 'night' : 'corporate';}">
+    </div>
+    <!--Swap Dark/Light mode-->
+    <form method="post" action="{% url 'testing:toggle_theme' %}">
+      {% csrf_token %}
+      <button id="theme-toggle" type="submit" class="btn btn-secondary btn-sm" aria-label="Toggle Theme" title="Toggle Theme">
+        {% if theme == 'corporate' %}
+        <!-- sun icon -->
+        <span class="icon-[ph--sun-fill] w-5 h-5 fill-current"></span>
+        {% else %}
+        <!-- moon icon -->
+        <span class="icon-[ph--moon-bold] w-5 h-5 fill-current"></span>
+        {% endif %}
+      </button>
+    </form>    
+    <main>
+      {% block content %}{% endblock content %}
+    </main>
+    {% compress js %}
+      {% block scripts %}{% endblock scripts %}
+    {% endcompress %}
+  </body>
+</html>
